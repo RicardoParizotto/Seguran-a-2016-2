@@ -1,5 +1,4 @@
-#! /usr/bin/env python2.5
-# -*- coding:utf-8 -*-
+#! /usr/bin/env python3
 
 M = 1099511627776
 B = 3
