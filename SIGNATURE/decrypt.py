@@ -16,20 +16,25 @@ import hashlib
 if __name__ == '__main__':
 
     f = open(sys.argv[1], "r")
-    
-    g = open(sys.argv[2], "r")
 
-    signature = f.read()
+    signature = f.readline()
     
-    e = g.read(308) #expoente
+    e = f.readline()
 
-    m = g.read(5) #modulo
+    m = f.readline()
+
+    message = f.read()
     
     pubkey = rsa.PublicKey(int(e), int(m))
 
+    print(pubkey)
+
     print(signature)
 
-    message = g.read()
+    print(rsa.decrypt(bytes(signature.encode("UTF-8")), pubkey))
 
-    print(rsa.verify(message, signature, pubkey))
+
+    #if(rsa.decrypt(signature, pubkey) == hashlib.sha256(message.encode("UTF-8")).hexdigest()) :
+        #print ("cuzinho")
+
 
